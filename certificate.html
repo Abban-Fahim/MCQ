@@ -5,12 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>U SUCK!</title>
+    <style>
+      * {
+        margin: none;
+        padding: none;
+      }
+      body {
+        text-align: center;
+        background-color: #272727;
+        color: white;
+        padding: 30px;
+        font-size: 24px;
+      }
+      i {
+        font-size: 45px;
+        color: green;
+      }
+      b {
+        font-size: 50px;
+      }
+    </style>
   </head>
   <body>
-    MCQ: <b id="title"></b>
+    <b id="title">MCQ: </b>
     <hr />
     Congrats on getting<br />
-    <i id="marks"></i>
+    <i id="marks"></i><br />
     Now go do something useful
   </body>
   <script>
@@ -18,7 +38,7 @@
     let marks = url.searchParams.get("marks");
     let total = url.searchParams.get("total");
     let title = url.searchParams.get("title");
-    document.getElementById("title").innerText = title;
+    document.getElementById("title").append(title);
     document.getElementById("marks").innerText = `${marks} out of ${total}`;
   </script>
 </html>

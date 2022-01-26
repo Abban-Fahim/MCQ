@@ -79,8 +79,11 @@ form.onsubmit = (e) => {
 certForm.onsubmit = (e) => {
   e.preventDefault();
   let marks = e.target.marks.value;
-  let total = form.childNodes[1].childNodes[3].value;
-  new URL("");
+  let title = form.childNodes[1].childNodes[3].value;
+  let total = form.childNodes[3].childNodes[3].value;
+  window.open(
+    `https://abban-fahim.github.io/MCQ/certificate.html?marks=${marks}&title=${title}&total=${total}`
+  );
 };
 
 function submitForCorrection() {
