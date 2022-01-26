@@ -1,0 +1,31 @@
+body {
+  background-color: #272727;
+  color: aliceblue;
+}
+
+form {
+  width: 50%;
+}
+
+input[readonly] {
+  filter: brightness(0.8);
+}
+
+thead {
+  position: sticky;
+  top: 0;
+}
+
+.form-check {
+  display: table-cell;
+}
+
+.form-check-input {
+  margin-left: 0 !important;
+}
+
+@media (max-width: 576px) {
+  form {
+    width: 100%;
+  }
+}
