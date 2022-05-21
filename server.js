@@ -8,7 +8,7 @@ app.get('/', (req,res)=>{
     res.sendFile(__dirname + '/index.html');
 });
 
-// executing commadns like "py pdf.py 0625 22 s 2"
+// executing commadns like "py pdf.py 0625 22 s (1/2) (1/2/3)"
 const command = 'py pdf.py 0625 21 s 2'
 
 cp.exec(command, (err, out, stderr)=>{

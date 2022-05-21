@@ -13,8 +13,9 @@ else: subject = "Chemistry"
 
 year = int(sys.argv[2])
 series = sys.argv[3] # can be s (May-June), w (Oct-Nov), m (March)
-variant = sys.argv[4]
-url = f"https://papers.gceguide.com/Cambridge%20IGCSE/{subject}%20({code})/20{str(year)}/{code}_{series}{str(year)}_ms_1{variant}.pdf"
+coreOrExtended = sys.argv[4]
+variant = sys.argv[5]
+url = f"https://papers.gceguide.com/Cambridge%20IGCSE/{subject}%20({code})/20{str(year)}/{code}_{series}{str(year)}_ms_{coreOrExtended}{variant}.pdf"
 req = requests.get(url, allow_redirects=True)
 # print(r.content)
 

@@ -1,10 +1,27 @@
 body {
-  background-color: #272727;
+  background-color: #3f2b4c;;
   color: aliceblue;
+  display: flex;
+  flex-direction: column;
+}
+
+header{
+  margin: 7px;
+  background-color: #35606b65;
+  border-radius: 14px;
 }
 
 form {
-  width: 50%;
+  width: 90%;
+  align-self: center;
+}
+
+select, input {
+  display: inline !important; margin-left: 10px;
+}
+
+.col-md-6 {
+  margin: 14px 0;
 }
 
 input[readonly] {
@@ -17,11 +34,13 @@ thead {
 }
 
 .form-check {
-  display: table-cell;
+  display: inline-block;
+  margin-left: 10px;
 }
 
 .form-check-input {
   margin-left: 0 !important;
+  margin-right: 10px;
 }
 
 @media (max-width: 576px) {
