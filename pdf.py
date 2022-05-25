@@ -17,7 +17,6 @@ coreOrExtended = sys.argv[4]
 variant = sys.argv[5]
 url = f"https://papers.gceguide.com/Cambridge%20IGCSE/{subject}%20({code})/20{str(year)}/{code}_{series}{str(year)}_ms_{coreOrExtended}{variant}.pdf"
 req = requests.get(url, allow_redirects=True)
-# print(r.content)
 
 # extracts the contents of page 1 and 2, piss off pre-2017
 reader = PdfFileReader(BytesIO(req.content))
@@ -32,7 +31,6 @@ final_text = text.replace("\n", "") # removes line breaks
 if (year > 19): # 2020 & 2021
     final_text = re.sub("[ ](1(?!\w))", "", final_text)
 elif (year > 16): # 2017 to 2019
-    print("lol") # yes
     final_text = re.sub(" 1(\s*?)(?=[0-9])", " ", final_text)
 
 if (year>16):

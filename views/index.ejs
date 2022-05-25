@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -35,12 +34,12 @@
         </div>
         <div class="col-md-6">
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="level" id="Core">
-            <label class="form-check-label" for="Core">Core</label>
+            <input class="form-check-input" type="radio" name="level" value="Core">
+            <label class="form-check-label">Core</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="level" id="Extended" checked>
-            <label class="form-check-label" for="Extended">Extended</label>
+            <input class="form-check-input" type="radio" name="level" value="Extended" checked>
+            <label class="form-check-label">Extended</label>
           </div>
         </div>
         <div class="col-md-6">
@@ -55,14 +54,12 @@
             <option value="w">Oct/Nov</option>
           </select>
           <label>Variant</label>
-          <input required type="number" name="year" min="1" max="3" class="w-25" />
+          <input required type="number" name="variant" min="1" max="3" class="w-25" />
         </div>
       </div>
       <button class="btn btn-primary" type="submit">GO!</button>
     </form>
-    <main class="row" id="interface"><!-- the options and pdf viewer --></main>
     <form id="cert"></form>
-    <code class="d-none"><%= ms %></code>
   </body>
-  <script src="./script.js"></script>
+  <script src="mainPage.js"></script>
 </html>

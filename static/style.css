@@ -5,6 +5,8 @@ body {
   flex-direction: column;
 }
 
+a{color: #fff;}
+
 header{
   margin: 7px;
   background-color: #35606b65;
@@ -44,7 +46,7 @@ iframe{border-radius: 14px; height: 100%;}
   margin-left: 0 !important;
   margin-right: 10px;
 }
-#interface{height: 95vh;}
+main{height: 95vh;}
 #questions{display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center; flex: 1;}
 .option{width: 40%; padding: 20px 5px; transition: .3s;}
 .option:hover, .option:active{filter: brightness(1.5);}

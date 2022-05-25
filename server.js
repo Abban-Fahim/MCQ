@@ -7,19 +7,20 @@ app.use(express.json());
 app.use(express.static('static'));
 app.set('view engine', 'ejs');
 
-// executing commadns like "py pdf.py 0625 22 s (1/2) (1/2/3)"
-const command = 'py pdf.py 0625 21 s 2 2'
-
 // main route to serve file
-app.get('/', (req,res)=>{
-    cp.exec(command, (err, out, stderr)=>{
-        if (err) {
-            console.error(err);
-        } else {
-            console.log(stderr);
-            res.render("index", {ms: out})
-        }
-    });
+app.get("/", (req,res)=>{res.render("index")})
+
+app.get('/paper/:paperDet', (req,res)=>{
+    if (req.params.paperDet.slice(0,2) === "06") {
+        cp.exec("py pdf.py " + req.params.paperDet, (err, out, stderr)=>{ // executing commands like "py pdf.py 0625 22 (s/m/w) (1/2) (1/2/3)"
+            if (err) {
+                console.error(err);
+            } else {
+                console.log(stderr);
+                res.render("paper", {ms: out})
+            }
+        });
+    }
 });
 
 app.listen('3000', ()=>{console.log('server started')})
