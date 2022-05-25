@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Abban-Fahim/MCQ#readme",
   "dependencies": {
+    "ejs": "^3.1.8",
     "express": "^4.18.1"
   }
 }

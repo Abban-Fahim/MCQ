@@ -745,6 +745,7 @@
 .pdfViewer .page canvas {
   margin: 0;
   display: block;
+  border-radius: 14px;
 }
 
 .pdfViewer .page canvas[hidden] {
@@ -803,14 +804,14 @@
   --progressBar-indeterminate-blend-color: rgba(116, 177, 239, 1);
   --scrollbar-color: auto;
   --scrollbar-bg-color: auto;
-  --toolbar-icon-bg-color: #60965b;
-  --toolbar-icon-hover-bg-color: #60965b;
+  --toolbar-icon-bg-color: #b012ff;
+  --toolbar-icon-hover-bg-color: #b012ff;
 
   --sidebar-narrow-bg-color: rgba(237, 237, 240, 0.9);
   --sidebar-toolbar-bg-color: rgba(245, 246, 247, 1);
   --toolbar-bg-color: rgba(249, 249, 250, 1);
   --toolbar-border-color: rgba(204, 204, 204, 1);
-  --button-hover-color: #60965b;
+  --button-hover-color: #b012ff;
   --toggled-btn-color: rgba(0, 0, 0, 1);
   --toggled-btn-bg-color: rgba(0, 0, 0, 0.3);
   --toggled-hover-active-btn-color: rgba(0, 0, 0, 0.4);
@@ -876,15 +877,15 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --main-color: rgba(249, 249, 250, 1);
-    --body-bg-color: #2b2b2b;
+    --body-bg-color: #35606b65;
     --errorWrapper-bg-color: rgba(169, 14, 14, 1);
     --progressBar-color: #2b2b2b;
     --progressBar-indeterminate-bg-color: rgba(40, 40, 43, 1);
     --progressBar-indeterminate-blend-color: rgba(20, 68, 133, 1);
-    --scrollbar-color: #60965b;
+    --scrollbar-color: #b012ff;
     --scrollbar-bg-color: rgba(35, 35, 39, 1);
-    --toolbar-icon-bg-color: #71e367;
-    --toolbar-icon-hover-bg-color: #3af929;
+    --toolbar-icon-bg-color: #b012ff;
+    --toolbar-icon-hover-bg-color: #b012ff;
 
     --sidebar-narrow-bg-color: rgba(42, 42, 46, 0.9);
     --sidebar-toolbar-bg-color: #2b2b2b;
@@ -1129,10 +1130,12 @@ html[dir="rtl"]
   right: 0;
   z-index: 9999;
   cursor: default;
+  padding: 12px;
 }
 
 #toolbarContainer {
   width: 100%;
+  border-radius: 14px;
 }
 
 #toolbarSidebar {
@@ -1191,47 +1194,8 @@ html[dir="rtl"] #sidebarResizer {
   height: 32px;
 }
 
-#loadingBar {
-  position: absolute;
-  height: 4px;
-  background-color: var(--body-bg-color);
-  border-bottom: 1px solid var(--toolbar-border-color);
-
-  transition-duration: var(--sidebar-transition-duration);
-  transition-timing-function: var(--sidebar-transition-timing-function);
-}
-html[dir="ltr"] #loadingBar {
-  transition-property: left;
-  left: 0;
-  right: var(--loadingBar-end-offset);
-}
-html[dir="rtl"] #loadingBar {
-  transition-property: right;
-  left: var(--loadingBar-end-offset);
-  right: 0;
-}
-
-html[dir="ltr"] #outerContainer.sidebarOpen #loadingBar {
-  left: var(--sidebar-width);
-}
-html[dir="rtl"] #outerContainer.sidebarOpen #loadingBar {
-  right: var(--sidebar-width);
-}
-
-#outerContainer.sidebarResizing #loadingBar {
-  /* Improve responsiveness and avoid visual glitches when the sidebar is resized. */
-  transition-duration: 0s;
-}
-
-#loadingBar .progress {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 100%;
-  background-color: var(--progressBar-color);
-  overflow: hidden;
-  transition: width 200ms;
+#loadingBar{
+  display: none;
 }
 
 @-webkit-keyframes progressIndeterminate {
@@ -1250,30 +1214,6 @@ html[dir="rtl"] #outerContainer.sidebarOpen #loadingBar {
   100% {
     left: 0;
   }
-}
-
-#loadingBar .progress.indeterminate {
-  background-color: var(--progressBar-indeterminate-bg-color);
-  transition: none;
-}
-
-#loadingBar .progress.indeterminate .glimmer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: calc(100% + 150px);
-  background: repeating-linear-gradient(
-    135deg,
-    var(--progressBar-indeterminate-blend-color) 0,
-    var(--progressBar-indeterminate-bg-color) 5px,
-    var(--progressBar-indeterminate-bg-color) 45px,
-    var(--progressBar-color) 55px,
-    var(--progressBar-color) 95px,
-    var(--progressBar-indeterminate-blend-color) 100px
-  );
-  -webkit-animation: progressIndeterminate 1s linear infinite;
-          animation: progressIndeterminate 1s linear infinite;
 }
 
 .findbar,

@@ -50,22 +50,27 @@ while formattingDone == True:
     numOfEl = len(listOfText) - 1
     formattingDone = False
     if (listOfText[0] == ","):
-        print("removed , from start")
+        # print("removed , from start")
         listOfText[0] = ""
         formattingDone = True; 
         final_text = "".join(listOfText); continue
     if (listOfText[0] != "1"):
-        print("added 1")
+        # print("added 1")
         listOfText.insert(0, '1,')
         formattingDone = True
     if (listOfText[numOfEl] == ","): 
-        print("removed , from end")
+        # print("removed , from end")
         listOfText[numOfEl] = ""
         formattingDone = True
     if (listOfText[numOfEl] == "1"):
-        print("removed 1") 
+        # print("removed 1") 
         listOfText[numOfEl] = ""
         formattingDone = True
     final_text = "".join(listOfText)
 
+QPreq = requests.get(f"https://papers.gceguide.com/Cambridge%20IGCSE/{subject}%20({code})/20{str(year)}/{code}_{series}{str(year)}_qp_{coreOrExtended}{variant}.pdf")
+
+file = open("static/temp.pdf", "wb")
+file.write(BytesIO(QPreq.content).read())
+file.close()
 print(final_text)

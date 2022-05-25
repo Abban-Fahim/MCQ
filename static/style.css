@@ -38,10 +38,20 @@ thead {
   margin-left: 10px;
 }
 
+iframe{border-radius: 14px; height: 100%;}
+
 .form-check-input {
   margin-left: 0 !important;
   margin-right: 10px;
 }
+#interface{height: 95vh;}
+#questions{display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center; flex: 1;}
+.option{width: 40%; padding: 20px 5px; transition: .3s;}
+.option:hover, .option:active{filter: brightness(1.5);}
+.option:nth-child(2){background-color: #4f8c8c;}
+.option:nth-child(3){background-color: #894e4e;}
+.option:nth-child(4){background-color: #589552;}
+.option:nth-child(5){background-color: #928150;}
 
 @media (max-width: 576px) {
   form {
