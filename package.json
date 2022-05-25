@@ -1,7 +1,7 @@
 {
   "name": "mcq-site",
   "version": "1.0.0",
-  "description": "",
+  "description": "A little app to help you prepare for the IGCSE Science MCQs",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

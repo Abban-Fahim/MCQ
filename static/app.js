@@ -1,8 +1,12 @@
-const main = document.querySelector("main");
+const pdfDiv = document.getElementById("viewer");
+const questionsDiv = document.querySelector("h4");
+const alertBox = document.getElementById("alert");
 const msText = document.querySelector("code").innerHTML;
 
 let marksObject = {};
-let QuestionNum = 1;
+let questionNum = 1;
+let numCorrect = 0;
+let numWrong = 0;
 
 function populateMarksObject (t) {
     a = t.split(',');
@@ -19,6 +23,28 @@ function populateMarksObject (t) {
 };
 
 populateMarksObject(msText);
-main.innerHTML = interface(QuestionNum);
-  
-function submitForCorrection() {}
+questionsDiv.innerHTML = questions(questionNum, numCorrect, numWrong);
+pdfDiv.innerHTML = pdfViewer;
+const btns = document.querySelectorAll('button');
+btns.forEach((btn)=>{btn.addEventListener('click', onClick)});
+
+function onClick(e) {
+    if (marksObject[questionNum] === e.target.id) {
+        numCorrect++;
+        alertBox.innerHTML = alertHTML("success");
+    } else {
+        numWrong++;
+        alertBox.innerHTML = alertHTML("danger");
+    }
+    setTimeout(()=>{alertBox.innerHTML = ""}, 1000)
+    increaseNum();
+};
+
+function increaseNum () {
+    if (questionNum===40){
+        // end the paper, show results
+    } else {
+        questionNum++;
+        questionsDiv.innerHTML = questions(questionNum, numCorrect, numWrong);
+    }
+};

@@ -6,9 +6,14 @@ The current subjects available are:
 
 No account needed, just select a paper and start answering :)
 
-{insert screenshot of interface here}
-
-{insert heroku-app (probably) link}
+![Interface screenshot](screenshot1.png "hover over second one lol")
+![Yet another interface screenshot](screenshot2.png "haha amazing scores ik")
+{insert heroku-app (probably) link} *Not available yet :(*
 
 ---
-*Check back soon*
+### How to host yourself
+1. Download the source code, *duh*
+2. Download python, and make sure its command line alias is `py`
+3. Run `npm install` to install dependancies
+4. Run `npm start` to start the node server
+5. Go to `localhost:3000` :)

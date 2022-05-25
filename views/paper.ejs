@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= ms %></title>
+    <title>Paper :)</title>
     <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -18,27 +18,31 @@
     <link rel="stylesheet" href="../style.css" />
 </head>
 <body class="container-fluid">
+    <div id="alert"></div>
     <header class="container-fluid navbar text-light mb-3">
         <h1 href="#" class="navbar-brand">A site to do MCQs ¯\_(ツ)_/¯</h1>
         <a href="https://github.com/Abban-Fahim/MCQ"><b class="align-self-end">Made with 🍯 by Abban :D</b></a>
     </header>
     <code class="d-none"><%= ms %></code>
-    <main class="row"><!-- the options and pdf viewer --></main>
+    <main class="row">
+        <div class="col-lg-4 col-md-6" id="questions">
+            <!-- the options --><h4 class="w-100"></h4>
+            <button class="btn option" id="A">A</button>
+            <button class="btn option" id="B">B</button>
+            <button class="btn option" id="C">C</button>
+            <button class="btn option" id="D">D</button>
+        </div>
+        <div class="col-lg-8 col-md-6" id="viewer"><!-- the pdf viewer --></div>
+    </main>
 </body>
 <script>
     // semi-reactive html variables
-    const interface = (num) => `
-    <div class="col-lg-4 col-md-6" id="questions">
-        <h4 class="w-100">Question ${num}:</h4>
-        <button class="btn option">A</button>
-        <button class="btn option">B</button>
-        <button class="btn option">C</button>
-        <button class="btn option">D</button>
-    </div>
-    <div class="col-lg-8 col-md-6">
-        <iframe width="100%" src="../pdfjs/web/viewer.html?file=../../temp.pdf"></iframe>
-    </div>
-    `
+    const pdfViewer = `<iframe width="100%" src="../pdfjs/web/viewer.html?file=../../temp.pdf"></iframe>`
+    const questions = (num, correct, wrong) => `
+    Question <b>${num}</b><br/>
+    Correct: <b>${correct}</b> -- Wrong: <b>${wrong}</b>
+    `;
+    const alertHTML = (type) => `<div class="alert alert-${type}">${type==="success"?"Correct":"Wrong"}!</div>`
 </script>
 <script src="../app.js"></script>
 </html>
