@@ -35,8 +35,13 @@ function onClick(e) {
     } else {
         numWrong++;
         alertBox.innerHTML = alertHTML("danger");
+        document.getElementById(marksObject[questionNum]).classList.add("correct")
     }
-    setTimeout(()=>{alertBox.innerHTML = ""}, 1000)
+
+    setTimeout(()=>{
+        alertBox.innerHTML = "";
+        document.querySelector(".correct").setAttribute("class", "btn option");
+    }, 1000)
     increaseNum();
 };
 
