@@ -6,9 +6,10 @@ The current subjects available are:
 
 No account needed, just select a paper and start answering :)
 
+Link: https://ez-mcq.herokuapp.com/
+
 ![Interface screenshot](screenshot1.png "hover over second one lol")
 ![Yet another interface screenshot](screenshot2.png "haha amazing scores ik")
-{insert heroku-app link} *Not available yet :(*
 
 ---
 ### How to host yourself
@@ -19,8 +20,8 @@ No account needed, just select a paper and start answering :)
 5. Go to `localhost:3000` :)
 ---
 ### Tasks for the (near) future
-- [ ] Deploy to Heroku (using something called multi-buildpacks)
+- [x] Deploy to Heroku (using something called multi-buildpacks)
 - [ ] Add a timer
-- [ ] Show the statistics of the MCQ (time taken, marks)
+- [x] Show the statistics of the MCQ (time taken, marks)
 - [ ] Save each results to `localstorage` for measuring progress over time
 - [ ] Do something fun w/ ur life (highly unlikely)
