@@ -12,7 +12,7 @@ app.get("/", (req,res)=>{res.render("index")})
 
 app.get('/paper/:paperDet', (req,res)=>{
     if (req.params.paperDet.slice(0,2) === "06") {
-        cp.exec("py pdf.py " + req.params.paperDet, (err, out, stderr)=>{ // executing commands like "py pdf.py 0625 22 (s/m/w) (1/2) (1/2/3)"
+        cp.exec("python pdf.py " + req.params.paperDet, (err, out, stderr)=>{ // executing commands like "python pdf.py 0625 22 (s/m/w) (1/2) (1/2/3)"
             if (err) {
                 console.error(err);
             } else {
