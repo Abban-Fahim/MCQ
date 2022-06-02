@@ -1,5 +1,6 @@
 body {
-  background-color: #3f2b4c;;
+  background-color: #3f2b4c;
+  background-image: url('candyhole.png');
   color: aliceblue;
   display: flex;
   flex-direction: column;

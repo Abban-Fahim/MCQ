@@ -17,10 +17,11 @@ app.get('/paper/:paperDet', (req,res)=>{
                 console.error(err);
             } else {
                 console.log(stderr);
+                console.log(out);
                 res.render("paper", {ms: out})
             }
         });
     }
 });
 
-app.listen('3000', ()=>{console.log('server started')})
+app.listen(process.env.PORT || '3000', ()=>{console.log('server started')})
