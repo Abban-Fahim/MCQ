@@ -21,7 +21,7 @@ Link: https://ez-mcq.herokuapp.com/
 ---
 ### Tasks for the (near) future
 - [x] Deploy to Heroku (using something called multi-buildpacks)
-- [ ] Add a timer
+- [x] Add a timer
 - [x] Show the statistics of the MCQ (time taken, marks)
 - [ ] Save each results to `localstorage` for measuring progress over time
 - [ ] Do something fun w/ ur life (highly unlikely)

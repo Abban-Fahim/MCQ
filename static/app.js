@@ -2,11 +2,15 @@ const pdfDiv = document.getElementById("viewer");
 const questionsDiv = document.querySelector("h4");
 const alertBox = document.getElementById("alert");
 const msText = document.querySelector("code").innerHTML;
+const timer = document.querySelector("time");
+const timerBtn = document.getElementById("timerBtn");
 
 let marksObject = {};
 let questionNum = 1;
 let numCorrect = 0;
 let numWrong = 0;
+let isPaused = true;
+let finsihed = false;
 
 function populateMarksObject (t) {
     a = t.split(',');
@@ -26,8 +30,18 @@ function populateMarksObject (t) {
 populateMarksObject(msText);
 questionsDiv.innerHTML = questions(questionNum, numCorrect, numWrong);
 pdfDiv.innerHTML = pdfViewer;
-const btns = document.querySelectorAll('button');
+const btns = document.querySelectorAll('.option');
 btns.forEach((btn)=>{btn.addEventListener('click', onClick)});
+
+timerBtn.addEventListener('click', (e)=>{
+    if (e.target.innerHTML !== "Pause") { 
+        e.target.innerHTML = "Pause";
+        isPaused = false; // start the timer
+    } else {
+        e.target.innerHTML = "Resume";
+        isPaused = true; // stop the timer
+    }
+});
 
 function onClick(e) {
     if (marksObject[questionNum] === e.target.id) {
@@ -55,3 +69,21 @@ function increaseNum () {
         questionsDiv.innerHTML = questions(questionNum, numCorrect, numWrong);
     }
 };
+
+setInterval(()=>{
+    if (!isPaused && !finsihed) {
+        t = timer.innerHTML.split(":");
+        mins = Number(t[0])
+        secs = Number(t[1])
+        if (secs===0) {
+            secs = 59;
+            if (mins===0){
+                alert("Time is over!");
+                finsihed = true;
+                mins = 0;
+                secs = 0;
+            } else mins--
+        } else secs--
+        timer.innerHTML = `${mins}:${secs}`
+    }
+}, 1000)

@@ -50,12 +50,14 @@ iframe{border-radius: 14px; height: 100%;}
 }
 main{height: 95vh;}
 #questions{display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center; flex: 1;}
+time{font-size: 24px; font-weight: bold;}
+#timerBtn{background-color: #35606b65; color: white;}
 .option{width: 40%; padding: 20px 5px; transition: .3s;}
 .option:hover, .option:active{filter: brightness(1.5);}
-.option:nth-child(2){background-color: #4f8c8c;}
-.option:nth-child(3){background-color: #894e4e;}
-.option:nth-child(4){background-color: #589552;}
-.option:nth-child(5){background-color: #928150;}
+.option:nth-child(3){background-color: #4f8c8c;}
+.option:nth-child(4){background-color: #894e4e;}
+.option:nth-child(5){background-color: #589552;}
+.option:nth-child(6){background-color: #928150;}
 .correct{box-shadow: #adffad 0 0 26px 16px;}
 
 @media (max-width: 576px) {
