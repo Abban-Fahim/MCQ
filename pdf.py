@@ -8,8 +8,16 @@ import sys
 code = sys.argv[1]
 subject = ""
 if (code=="0610"): subject = "Biology"
+elif (code=="0620"): subject = "Chemistry"
 elif (code=="0625"): subject = "Physics"
-else: subject = "Chemistry"
+elif (code=="0653"): subject = "Science - Combined"
+elif (code=="0455"): subject = "Economics"
+elif (code=="0452"): subject = "Accounting"
+
+# Some notes:
+# - Accounting MCQs only introduced in 2020
+# - Combined Science papers only availble form 2014 onwards
+
 
 year = int(sys.argv[2])
 series = sys.argv[3] # can be s (May-June), w (Oct-Nov), m (March)

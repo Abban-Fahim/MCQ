@@ -14,7 +14,7 @@ Link: https://ez-mcq.herokuapp.com/
 ---
 ### How to host yourself
 1. Download the source code, *duh*
-2. Download python, and make sure its command line alias is `py`
+2. Download python, and make sure its command line alias is `python`
 3. Run `npm install` to install dependancies
 4. Run `npm start` to start the node server
 5. Go to `localhost:3000` :)
