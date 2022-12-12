@@ -22,7 +22,7 @@
     <header class="container-fluid navbar text-light mb-3">
       <a href="/">< GO BACK</a>
       <h1 href="#" class="navbar-brand">A site to do MCQs ¯\_(ツ)_/¯</h1>
-      <a href="https://github.com/Abban-Fahim/MCQ"><b class="align-self-end">Made with <3 by Abban</b></a>
+      <a href="https://github.com/Abban-Fahim/MCQ"><b class="align-self-end">Made with 🍵 by Abban</b></a>
     </header>
     <code class="d-none">{{ ms }}</code>
     <main class="row">
@@ -38,18 +38,37 @@
         <button class="btn option" id="C">C</button>
         <button class="btn option" id="D">D</button>
       </div>
-      <div class="col-lg-8 col-md-6" id="viewer">{{pdfFile}}</div>
+      <div class="col-lg-8 col-md-6" id="viewer">
+        <canvas></canvas>
+        <div id="controls">
+          <button id="prev"><</button>
+          <button id="next">></button>
+        </div>
+      </div>
     </main>
+    <div id="pdfArrayBuffer">{{pdfFile}}</div>
   </body>
   <script>
     // semi-reactive html variables
-    const pdfViewer = (url) =>
-      `<object width="100%" height="100%" type="application/pdf" data="data:application/pdf;base64,${url}"></object>`;
+    // const pdfViewer = (url) =>
+    //   `<object width="100%" height="100%" type="application/pdf" data="data:application/pdf;base64,${url}"></object>`;
     const questions = (num, correct, wrong) => `
     Question <b>${num}</b><br/>
     Correct: <b>${correct}</b> -- Wrong: <b>${wrong}</b>
     `;
     const alertHTML = (type) => `<div class="alert alert-${type}">${type === "success" ? "Correct" : "Wrong"}!</div>`;
   </script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.1.81/pdf.min.js"
+    integrity="sha512-RV+l/3iMDTmIt64ztJmriqLRZl2IwGHcG+655gFxUa20Uq9GljEsY3wibq5BZkGzRlMbYFHUPelVQvWvZxP38w=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.1.81/pdf.worker.min.js"
+    integrity="sha512-SkgE+ne1nSVqCMd8lr6ojLZqVWJwsQf5Hokoh4Ip2D8oD9hoiZWMPINGHuB1YDS/E7d34SsOuSy9VSz5zKxflQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
   <script src="../static/app.js"></script>
 </html>

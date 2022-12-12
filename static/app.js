@@ -1,10 +1,23 @@
-const questionsDiv = document.querySelector("h4");
-const alertBox = document.getElementById("alert");
-const msText = document.querySelector("code").innerHTML;
-const pdfArrayBuffer = document.getElementById("viewer");
-const timer = document.querySelector("time");
-const timerBtn = document.getElementById("timerBtn");
+const questionsDiv = document.querySelector("h4"); // Question number display
+const alertBox = document.getElementById("alert"); // Alerts whether answer is wrong or right
+const msText = document.querySelector("code").innerHTML; // Contains data for markScheme
+const pdfArrayBuffer = document.getElementById("pdfArrayBuffer"); // Contains data for pdf binary
+const timer = document.querySelector("time"); // Timer display
+const timerBtn = document.getElementById("timerBtn"); // Timer controls
+const pdfViewer = document.querySelector("canvas"); // Canvas for displaying pdf
+const prevBtn = document.getElementById("prev"); // Previous page for pdf
+const nextBtn = document.getElementById("next"); // Next page for pdf
 
+// Variables for PDF Viewer
+let pdfDoc = null;
+const pdfjsLib = window["pdfjs-dist/build/pdf"];
+const pdfCtx = pdfViewer.getContext("2d");
+let pageNum = 1;
+let scale = 2;
+let isRendering = false;
+let pageQueue = null;
+
+// Variables for app functionality
 let marksObject = {};
 let questionNum = 1;
 let numCorrect = 0;
@@ -12,14 +25,60 @@ let numWrong = 0;
 let isPaused = true;
 let finished = false;
 
-let pdfBlob = new Blob([[pdfArrayBuffer.innerHTML]], {
-  type: "application/pdf",
-});
-let pdfFile = URL.createObjectURL(pdfBlob);
-console.log(pdfFile);
-pdfArrayBuffer.innerHTML = pdfViewer(pdfArrayBuffer.innerHTML.slice(2, pdfArrayBuffer.innerHTML.length - 1));
-// pdfArrayBuffer.innerHTML = pdfViewer(pdfFile);
+// PDF Viewer functionality. See: https://mozilla.github.io/pdf.js/examples/
+pdfjsLib.GlobalWorkerOptions.workerSrc = window["pdfjs-dist/build/pdf.worker"];
+const pdf = atob(pdfArrayBuffer.innerHTML.slice(2, pdfArrayBuffer.innerHTML.length - 1));
+pdfArrayBuffer.innerHTML = "";
+console.log(pdfjsLib);
 
+// Renders a page, and another if it's queued
+function renderPage(num) {
+  isRendering = true;
+  pdfDoc.getPage(num).then((page) => {
+    let viewport = page.getViewport({ scale: scale });
+    pdfViewer.height = viewport.height;
+    pdfViewer.width = viewport.width;
+    page.render({ canvasContext: pdfCtx, viewport: viewport }).promise.then(() => {
+      console.log("Page rendered!");
+      isRendering = false;
+      if (pageQueue !== null) {
+        renderPage(pageQueue);
+        pageQueue = null;
+      }
+    });
+  });
+}
+
+// Queues up a page to render if one is already rendering
+function queueRender(num) {
+  if (isRendering) {
+    pageQueue(num);
+  } else {
+    renderPage(num);
+  }
+}
+
+// Event listeners for pdf controls
+prevBtn.addEventListener("click", () => {
+  if (pageNum > 1) {
+    pageNum--;
+    queueRender(pageNum);
+  }
+});
+nextBtn.addEventListener("click", () => {
+  if (pageNum < pdfDoc.numPages) {
+    pageNum++;
+    queueRender(pageNum);
+  }
+});
+
+// Initial/first page rendering and download whole pdf
+pdfjsLib.getDocument({ data: pdf }).promise.then(function (pdfDoc_) {
+  pdfDoc = pdfDoc_;
+  renderPage(pageNum);
+});
+
+// App functionality
 function populateMarksObject(t) {
   a = t.split(",");
   a1 = [];
@@ -48,16 +107,6 @@ btns.forEach((btn) => {
   btn.addEventListener("click", onClick);
 });
 
-timerBtn.addEventListener("click", (e) => {
-  if (e.target.innerHTML !== "Pause") {
-    e.target.innerHTML = "Pause";
-    isPaused = false; // start the timer
-  } else {
-    e.target.innerHTML = "Resume";
-    isPaused = true; // stop the timer
-  }
-});
-
 function onClick(e) {
   if (marksObject[questionNum] === e.target.id) {
     numCorrect++;
@@ -84,6 +133,17 @@ function increaseNum() {
     questionsDiv.innerHTML = questions(questionNum, numCorrect, numWrong);
   }
 }
+
+// Timer functionality
+timerBtn.addEventListener("click", (e) => {
+  if (e.target.innerHTML !== "Pause") {
+    e.target.innerHTML = "Pause";
+    isPaused = false; // start the timer
+  } else {
+    e.target.innerHTML = "Resume";
+    isPaused = true; // stop the timer
+  }
+});
 
 setInterval(() => {
   if (!isPaused && !finished) {

@@ -3,7 +3,6 @@ from distutils.log import error
 from PyPDF2 import PdfFileReader
 import requests
 from io import BytesIO
-import tempfile
 import re
 import base64
 
@@ -81,10 +80,11 @@ def main(args):
             formattingDone = True
         final_text = "".join(listOfText)
 
-    QPreq = requests.get(f"https://papers.gceguide.com/Cambridge%20IGCSE/{subject}%20({code})/20{str(year)}/{code}_{series}{str(year)}_qp_{coreOrExtended}{variant}.pdf")
+    QPreq = requests.get(f"https://papers.gceguide.com/Cambridge%20IGCSE/{subject}%20({code})/20{str(year)}/{code}_{series}{str(year)}_qp_{coreOrExtended}{variant}.pdf", )
     if QPreq.status_code != 200:
         return {"err": "Request Failed"}
     
     qpFile = base64.b64encode(QPreq.content)
+    # qpFile = QPreq.content
 
     return [final_text, qpFile]

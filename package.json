@@ -4,8 +4,9 @@
   "description": "A little app to help you prepare for the IGCSE Science MCQs",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "./test.sh",
+    "start": "flask --app main --debug run",
+    "publish": "deta deploy"
   },
   "repository": {
     "type": "git",

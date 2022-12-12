@@ -13,7 +13,7 @@ Link: https://kzdtp9.deta.dev/
 ![Interface screenshot](screenshot1.png "hover over second one lol")
 ![Yet another interface screenshot](screenshot2.png "haha amazing scores ik")
 
-> # [IMPORTANT NOTE] The nodejs backend has been deprecated ever since deploying to deta (Heroku has ended their free tier hosting). The npm-related files still remain for those still interested. The new backend runs using python (Flask).
+> [IMPORTANT NOTE] The nodejs backend has been deprecated ever since deploying to deta (Heroku has ended their free tier hosting). The npm-related files still remain for those still interested. The new backend runs using python (Flask).
 
 ---
 
@@ -23,8 +23,8 @@ Link: https://kzdtp9.deta.dev/
 2. Get sum python
 3. set up a python virtual environment (optional, but recommended for ur sanity)
 4. Install all python dependencies using lé `pip`
-5. Run `npm install` to install dependencies (deprecated)
-6. Run `npm start` to start the node server (deprecated)
+5. ~~Run `npm install` to install dependencies~~ (deprecated)
+6. ~~Run `npm start` to start the node server~~ (deprecated)
 7. Run `flask --app main --debug run` to start the flask **development server**
 
 ---
