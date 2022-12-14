@@ -7,13 +7,16 @@ const timerBtn = document.getElementById("timerBtn"); // Timer controls
 const pdfViewer = document.querySelector("canvas"); // Canvas for displaying pdf
 const prevBtn = document.getElementById("prev"); // Previous page for pdf
 const nextBtn = document.getElementById("next"); // Next page for pdf
+const zoomInBtn = document.getElementById("zoomIn"); // Zoom into the pdf
+const zoomOutBtn = document.getElementById("zoomOut"); // Next out of the pdf
 
 // Variables for PDF Viewer
 let pdfDoc = null;
 const pdfjsLib = window["pdfjs-dist/build/pdf"];
 const pdfCtx = pdfViewer.getContext("2d");
+const scale = 2;
+let pdfZoom = 100;
 let pageNum = 1;
-let scale = 2;
 let isRendering = false;
 let pageQueue = null;
 
@@ -70,6 +73,19 @@ nextBtn.addEventListener("click", () => {
     pageNum++;
     queueRender(pageNum);
   }
+});
+
+function setPdfZoom() {
+  pdfViewer.style.width = `${pdfViewer.width * (pdfZoom / 100)}px`;
+  pdfViewer.style.height = `${pdfViewer.height * (pdfZoom / 100)}px`;
+}
+zoomInBtn.addEventListener("click", () => {
+  pdfZoom *= 1.05;
+  setPdfZoom();
+});
+zoomOutBtn.addEventListener("click", () => {
+  pdfZoom /= 1.05;
+  setPdfZoom();
 });
 
 // Initial/first page rendering and download whole pdf

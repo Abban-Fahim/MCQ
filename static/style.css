@@ -40,7 +40,7 @@ input {
   z-index: 20;
   top: 49%;
 }
-#controls * {
+#viewer div button {
   background-color: #35606b65;
   border: none;
   border-radius: 14px;
@@ -50,8 +50,8 @@ input {
 }
 canvas {
   border-radius: 14px;
-  height: 90%;
-  width: 90%;
+  height: 100%;
+  width: 100%;
 }
 #alert {
   position: absolute;
@@ -73,7 +73,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
   flex: 1;
 }
 time {

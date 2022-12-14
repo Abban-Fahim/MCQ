@@ -36,3 +36,10 @@ Link: https://kzdtp9.deta.dev/
 - [x] Show the statistics of the MCQ (time taken, marks)
 - [ ] Save each results to `localstorage` for measuring progress over time
 - [ ] Do something fun w/ ur life (highly unlikely)
+
+### Tasks for implementing A-levels MCQs
+
+- [ ] Redesign paper selection for client-side validation
+- [ ] Parametrise the timer functionality and paper name
+- [ ] Do above task of saving results
+- [x] Fix app styles (paper-solving interface)
