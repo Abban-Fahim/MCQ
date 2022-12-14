@@ -6,7 +6,7 @@
   "scripts": {
     "test": "./test.sh",
     "start": "flask --app main --debug run",
-    "publish": "deta deploy"
+    "deploy": "deta deploy"
   },
   "repository": {
     "type": "git",
