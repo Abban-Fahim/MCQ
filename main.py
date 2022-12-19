@@ -12,5 +12,7 @@ def servePaper(paperDetails):
     scriptOut = pdf.main(paperDetails)
     markSchemeText = scriptOut[0]
     qpFile = scriptOut[1]
+    paperName = scriptOut[2]
+    timing = scriptOut[3]
 
-    return render_template("paper.html", ms=markSchemeText, pdfFile=qpFile)
+    return render_template("paper.html", ms=markSchemeText, pdfFile=qpFile, paperName=paperName, timing = timing)

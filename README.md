@@ -39,7 +39,7 @@ Link: https://kzdtp9.deta.dev/
 
 ### Tasks for implementing A-levels MCQs
 
-- [ ] Redesign paper selection for client-side validation
-- [ ] Parametrise the timer functionality and paper name
+- [x] Redesign paper selection for client-side validation
+- [x] Parametrise the timer functionality and paper name
 - [ ] Do above task of saving results
 - [x] Fix app styles (paper-solving interface)

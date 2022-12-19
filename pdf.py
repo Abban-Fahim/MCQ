@@ -8,16 +8,21 @@ import base64
 
 def main(args):
     argA = str(args).split(" ")
+    qualification = f"Cambridge%20IGCSE"
+    timings = "45:0"
     # Determines which subject is chosen
     code = argA[0]
     subject = ""
-    if (code=="0610"): subject = "Biology"
-    elif (code=="0620"): subject = "Chemistry"
-    elif (code=="0625"): subject = "Physics"
+    if (code=="0610" or code=="9700"): subject = "Biology"
+    elif (code=="0620" or code=="9701"): subject = "Chemistry"
+    elif (code=="0625" or code=="9702"): subject = "Physics"
     elif (code=="0653"): subject = "Science - Combined"
     elif (code=="0455"): subject = "Economics"
     elif (code=="0452"): subject = "Accounting"
 
+    if (int(code) >= 9700):
+        qualification = "A%20Levels"
+        timings = "75:0"
     # Some notes:
     # - Accounting MCQs only introduced in 2020
     # - Combined Science papers only availble form 2014 onwards
@@ -26,11 +31,10 @@ def main(args):
     series = argA[2] # can be s (May-June), w (Oct-Nov), m (March)
     coreOrExtended = argA[3]
     variant = argA[4]
-    url = f"https://papers.gceguide.com/Cambridge%20IGCSE/{subject}%20({code})/20{str(year)}/{code}_{series}{str(year)}_ms_{coreOrExtended}{variant}.pdf"
+    url = f"https://papers.gceguide.com/{qualification}/{subject}%20({code})/20{str(year)}/{code}_{series}{str(year)}_ms_{coreOrExtended}{variant}.pdf"
     req = requests.get(url, allow_redirects=True)
     if req.status_code != 200:
         return {"err": "Request Failed"}
-        error("lollll")
 
     # extracts the contents of page 1 and 2, piss off pre-2017
     reader = PdfFileReader(BytesIO(req.content))
@@ -80,11 +84,12 @@ def main(args):
             formattingDone = True
         final_text = "".join(listOfText)
 
-    QPreq = requests.get(f"https://papers.gceguide.com/Cambridge%20IGCSE/{subject}%20({code})/20{str(year)}/{code}_{series}{str(year)}_qp_{coreOrExtended}{variant}.pdf", )
+    QPreq = requests.get(f"https://papers.gceguide.com/{qualification}/{subject}%20({code})/20{str(year)}/{code}_{series}{str(year)}_qp_{coreOrExtended}{variant}.pdf", )
     if QPreq.status_code != 200:
         return {"err": "Request Failed"}
     
     qpFile = base64.b64encode(QPreq.content)
+    paperName = f"{code} {subject} {coreOrExtended}{variant}, {series}-20{str(year)}"
     # qpFile = QPreq.content
 
-    return [final_text, qpFile]
+    return [final_text, qpFile, paperName, timings]

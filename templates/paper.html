@@ -38,7 +38,7 @@
     <main class="row">
       <div class="col-lg-4 col-md-6" id="questions">
         <div class="w-100 d-flex justify-content-around">
-          <time>45:0</time>
+          <time>{{timing}}</time>
           <button class="btn" id="timerBtn">Start timer</button>
         </div>
         <!-- the options -->
@@ -49,7 +49,9 @@
         <button class="btn option" id="D">D</button>
       </div>
       <div class="col-lg-8 col-md-6" id="viewer">
-        <div style="display: flex; align-items: center; justify-content: center">
+        <div
+          style="display: flex; align-items: center; justify-content: center; position: absolute; top: 0; width: 100%"
+        >
           <button id="zoomIn">+</button>
           <button id="zoomOut">-</button>
         </div>
@@ -67,6 +69,7 @@
     // const pdfViewer = (url) =>
     //   `<object width="100%" height="100%" type="application/pdf" data="data:application/pdf;base64,${url}"></object>`;
     const questions = (num, correct, wrong) => `
+    {{paperName}}<br/>
     Question <b>${num}</b><br/>
     Correct: <b>${correct}</b> -- Wrong: <b>${wrong}</b>
     `;

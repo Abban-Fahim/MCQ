@@ -28,6 +28,7 @@
     gtag("config", "G-V3NJK4JVMX");
   </script>
   <body class="container-fluid">
+    <div id="alert"></div>
     <header class="container-fluid navbar text-light mb-3">
       <h1 href="#" class="navbar-brand">A site to do MCQs ¯\_(ツ)_/¯</h1>
       <a href="https://github.com/Abban-Fahim/MCQ"><b class="align-self-end">Made with 🍵 by Abban</b></a>
@@ -37,9 +38,16 @@
         <div class="col-md-6">
           <label>Chose your subject:</label>
           <select class="form-check" name="subject">
-            <option value="0610">Biology (0610)</option>
-            <option value="0620">Chemistry (0620)</option>
-            <option value="0625">Physics (0625)</option>
+            <optgroup label="Cambridge IGCSE">
+              <option value="0610">Biology (0610)</option>
+              <option value="0620">Chemistry (0620)</option>
+              <option value="0625">Physics (0625)</option>
+            </optgroup>
+            <optgroup label="Cambridge AS/A Levels">
+              <option value="9700">Biology (9700)</option>
+              <option value="9701">Chemistry (9701)</option>
+              <option value="9702">Physics (9702)</option>
+            </optgroup>
           </select>
         </div>
         <div class="col-md-6">
