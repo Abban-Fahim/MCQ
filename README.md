@@ -5,6 +5,9 @@ The current subjects available are:
 - Biology 0610
 - Chemistry 0620
 - Physics 0625
+- Biology 9700 (AS-levels)
+- Chemistry (9701) (AS-levels)
+- Physics (9702) (AS-levels)
 
 No account needed, just select a paper and start answering :)
 
