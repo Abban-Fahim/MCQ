@@ -1,0 +1,11 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: mcq-site
+    src: ./
+    engine: python3.9
+    primary: true
+    dev: flask --app main --debug run
+    public_routes:
+    - "/*"
+

@@ -8,7 +8,7 @@ import base64
 
 def main(args):
     argA = str(args).split(" ")
-    qualification = f"Cambridge%20IGCSE"
+    qualification = "Cambridge%20IGCSE"
     timings = "45:0"
     # Determines which subject is chosen
     code = argA[0]
@@ -31,7 +31,12 @@ def main(args):
     series = argA[2] # can be s (May-June), w (Oct-Nov), m (March)
     coreOrExtended = argA[3]
     variant = argA[4]
-    url = f"https://papers.gceguide.com/{qualification}/{subject}%20({code})/20{str(year)}/{code}_{series}{str(year)}_ms_{coreOrExtended}{variant}.pdf"
+    
+    # Old api endpoint for getting papers from GCE Guide, alas it was shut down
+    # url = f"https://papers.gceguide.com/{qualification}/{subject}%20({code})/20{str(year)}/{code}_{series}{str(year)}_ms_{coreOrExtended}{variant}.pdf"
+    
+    url = f"https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/{code}_{series}{str(year)}_ms_{coreOrExtended}{variant}.pdf"
+
     req = requests.get(url, allow_redirects=True)
     if req.status_code != 200:
         return {"err": "Request Failed"}
@@ -84,7 +89,9 @@ def main(args):
             formattingDone = True
         final_text = "".join(listOfText)
 
-    QPreq = requests.get(f"https://papers.gceguide.com/{qualification}/{subject}%20({code})/20{str(year)}/{code}_{series}{str(year)}_qp_{coreOrExtended}{variant}.pdf", )
+    # QPreq = requests.get(f"https://papers.gceguide.com/{qualification}/{subject}%20({code})/20{str(year)}/{code}_{series}{str(year)}_qp_{coreOrExtended}{variant}.pdf")
+    QPreq = requests.get(f"https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/{code}_{series}{str(year)}_qp_{coreOrExtended}{variant}.pdf")
+    
     if QPreq.status_code != 200:
         return {"err": "Request Failed"}
     

@@ -3,3 +3,4 @@ node_modules
 logs.txt
 venv
 __pycache__
+.space
